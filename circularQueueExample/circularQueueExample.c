@@ -1,4 +1,11 @@
-﻿#include <stdio.h>
+﻿/*
+프로그램 내용 : 원형큐 프로그램 예제
+실습일 : 2023.04.06
+실습자 : 박현규
+학번 : 202111678
+*/
+
+#include <stdio.h>
 #include <stdlib.h>
 #define MAX_QUEUE_SIZE 100
 
@@ -25,13 +32,6 @@ void enqueue(Element val)
 	rear = (rear + 1) % MAX_QUEUE_SIZE;
 	data[rear] = val;
 }
-/*
-프로그램 내용 : 원형큐 프로그램 예제
-실습일 : 2023.04.06
-실습자 : 박현규
-학번 : 202111678
-*/
-
 
 Element dequeue()
 {
