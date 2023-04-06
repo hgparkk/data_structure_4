@@ -25,6 +25,13 @@ void enqueue(Element val)
 	rear = (rear + 1) % MAX_QUEUE_SIZE;
 	data[rear] = val;
 }
+/*
+프로그램 내용 : 원형큐 프로그램 예제
+실습일 : 2023.04.06
+실습자 : 박현규
+학번 : 202111678
+*/
+
 
 Element dequeue()
 {
@@ -58,9 +65,9 @@ void main()
 	init_queue();
 	for (i = 1;i < 10;i++)
 		enqueue(i);
-	print_queue("선형큐 enqueue 9회");
+	print_queue("원형큐 enqueue 9회");
 	printf("\tdequeue() --> %d\n", dequeue());
 	printf("\tdequeue() --> %d\n", dequeue());
 	printf("\tdequeue() --> %d\n", dequeue());
-	print_queue("선형큐 dequeue 3회");
+	print_queue("원형큐 dequeue 3회");
 }
