@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{125e1a97-c4a4-4ac3-8b2a-05f368e2ecf3}</ProjectGuid>
-    <RootNamespace>queueExampleUseTwoStack</RootNamespace>
+    <ProjectGuid>{cfd14801-6969-41f2-bb7b-6e3769083a71}</ProjectGuid>
+    <RootNamespace>meetingMatching</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -127,7 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="queueExampleUseTwoStack.c">
+    <ClCompile Include="meetingMatching.c">
       <SDLCheck Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</SDLCheck>
     </ClCompile>
   </ItemGroup>
