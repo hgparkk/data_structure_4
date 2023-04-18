@@ -13,7 +13,7 @@
 typedef struct Student
 {
 	char name[80];
-	char gender;
+	char gender[2];
 }Element;
 
 typedef struct CircularQueue {
@@ -62,7 +62,7 @@ void print_queue(Queue* q, char msg[])
 	if (q->front >= q->rear) maxi += MAX_QUEUE_SIZE;
 	printf("%s[%2d]=", msg, size(q));
 	for (i = q->front + 1;i <= maxi;i++)
-		printf("%s, %c", q->data[i % MAX_QUEUE_SIZE].name, q->data[i%MAX_QUEUE_SIZE].gender);
+		printf("%s, %s", q->data[i % MAX_QUEUE_SIZE].name, q->data[i%MAX_QUEUE_SIZE].gender);
 	printf("\n");
 }
 
@@ -70,7 +70,7 @@ void main()
 {
 	Element e;
 	char name[80];
-	char gender;
+	char gender[2];
 	Queue mq;
 	Queue fq;
 	init_queue(&mq);
@@ -78,9 +78,8 @@ void main()
 	while(1)
 	{
 		printf("고객의 이름은?(종료는 -1) >>");
-		scanf("%s", name);
-		printf("\n");
-		if (strcmp(name, '-1') == 0)
+		scanf("%s", &name);
+		if (strcmp(name, "-1") == 0)
 		{
 			printf("미팅 주선 프로그램을 종료합니다.");
 			break;
@@ -88,16 +87,40 @@ void main()
 		else
 		{
 			printf("성별을 입력(남자는 m, 여자는 f) >>");
-			scanf("%c", &gender);
-			if (strcmp('m', gender))
+			scanf(" %s", &gender);
+			if (strcmp("m", gender) == 0)
 			{
 				strcpy(e.name,name);
-				e.gender = gender;
+				strcpy(e.gender,gender);
 				if (is_empty(&fq))
 				{
-					printf("아직 대상자가 없습니다.");
+					printf("아직 대상자가 없습니다.\n");
 					enqueue(&mq,e);
 				}
+				else
+				{
+					Element matchf = dequeue(&fq);
+					printf("커플 탄생 : %s과 %s\n", e.name, matchf.name);
+				}
+			}
+			else if (strcmp("f", gender) == 0)
+			{
+				strcpy(e.name, name);
+				strcpy(e.gender, gender);
+				if (is_empty(&mq))
+				{
+					printf("아직 대상자가 없습니다.\n");
+					enqueue(&fq, e);
+				}
+				else
+				{
+					Element matchm = dequeue(&mq);
+					printf("커플 탄생 : %s과 %s\n", matchm.name, e.name);
+				}
+			}
+			else
+			{
+				printf("잘못된 입력 입니다.\n");
 			}
 		}
 	}
